@@ -11,6 +11,9 @@ public class Task_Manager {
 
 //    run the main loop
     public static void main(String[] args) {
+
+        System.out.println("h");
+
         add_task();
         add_task();
 
