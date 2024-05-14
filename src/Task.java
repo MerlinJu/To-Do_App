@@ -3,10 +3,13 @@ package src;
 public class Task {
     private String description;
     private int id;
+    private String difficulty;
 
-    public Task (int id, String description) {
+//    Task Constructor
+    public Task (int id, String description, String difficulty) {
         this.description = description;
         this.id = id;
+        this.difficulty = difficulty;
     }
 
     public String getDescription() {
@@ -15,6 +18,14 @@ public class Task {
 
     public int getId() {
         return id;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

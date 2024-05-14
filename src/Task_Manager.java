@@ -11,16 +11,12 @@ public class Task_Manager {
 
 //    run the main loop
     public static void main(String[] args) {
-
-        System.out.println("h");
-
-        add_task();
         add_task();
 
 //      print the taskList contents
         display_tasks();
 
-        remove_task();
+        update_task();
 
         display_tasks();
 
@@ -31,11 +27,18 @@ public class Task_Manager {
 
 //    add new tasks to the task list
     public static void add_task() {
+
+//        Description
         System.out.println("EnterTask Description: ");
         String description = scanner.nextLine();
 
+//        Difficulty
+        System.out.println("Enter Task Difficulty: ");
+        String difficulty = scanner.nextLine();
+
+
 //        create new task with the provided description and pass ID the increment ID for next task
-        Task newTask = new Task(taskIdCounter++, description);
+        Task newTask = new Task(taskIdCounter++, description, difficulty);
 
 //        add the new task to the tasklist
         taskList.add(newTask);
@@ -56,10 +59,31 @@ public class Task_Manager {
 
     }
 
+
+    public static void update_task() {
+        System.out.println("Task ID of Task to be edited: ");
+        int id_toEdit = scanner.nextInt();
+        scanner.nextLine();
+
+//        task to be edited
+        Task task_toEdit = taskList.get(id_toEdit-1);
+
+//        edit the task description
+        System.out.println("Current Task Description : " + task_toEdit.getDescription());
+        System.out.println("Enter the new task description: ");
+        String new_taskDescription = scanner.nextLine();
+
+//        update the description
+        task_toEdit.setDescription(new_taskDescription);
+
+        System.out.println("Task Description updatet succesfully.");
+    }
+
+
 //    display all tasks
     public static void display_tasks() {
         for (Task task : taskList) {
-            System.out.println("Task ID: " + task.getId() + ", Description: " + task.getDescription());
+            System.out.println("Task ID: " + task.getId() + ", Description: " + task.getDescription() + ", Difficulty: " + task.getDifficulty());
         }
     }
 
